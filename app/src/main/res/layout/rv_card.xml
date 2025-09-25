@@ -25,35 +25,6 @@
             android:textColor="@color/white"
             />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Transcription"
-            android:id="@+id/transcript"
-            android:textColor="@color/white"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Translation"
-            android:id="@+id/translate"
-            android:textColor="@color/white"
-            />
-
-        <ImageButton
-            android:id="@+id/btn_del"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/delete"
-            android:background="#00000000"
-            />
-
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

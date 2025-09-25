@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import database.DatabaseHelper
+import recycler_view.RecyclerAdapter
+import recycler_view.SwipeHelper
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,11 +47,14 @@ class DictionaryFr : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val db = DatabaseHelper(view.context)
 
-        val myAdapter = RecyclerAdapter(db)
+        val myAdapter = RecyclerAdapter(db, this.requireContext())
         val rv: RecyclerView = view.findViewById(R.id.recyclerView)
         rv.layoutManager = LinearLayoutManager(view.context)
         rv.adapter = myAdapter
         myAdapter.words_data = db.ReadData()
+
+        val swipeHelper = ItemTouchHelper(SwipeHelper(myAdapter))
+        swipeHelper.attachToRecyclerView(rv)
     }
 
     companion object {

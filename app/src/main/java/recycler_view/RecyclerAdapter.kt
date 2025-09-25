@@ -1,15 +1,22 @@
-package com.kew.enwords
+package recycler_view
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.kew.enwords.MainActivity
+import com.kew.enwords.R
+import com.kew.enwords.SettingsActivity
+import com.kew.enwords.WordInfoActivity
 import database.DatabaseHelper
 import database.WordStructure
 
-class RecyclerAdapter(private val dbHelper: DatabaseHelper): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(private val dbHelper: DatabaseHelper, private val context: Context): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     var words_data = mutableListOf<WordStructure>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context).inflate(R.layout.rv_card, parent, false)
@@ -18,17 +25,24 @@ class RecyclerAdapter(private val dbHelper: DatabaseHelper): RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.word.text = words_data[position].word
-        holder.btn_del.setOnClickListener {
-            dbHelper.DeleteData(words_data[position].id)
-            words_data = dbHelper.ReadData()
-            this.notifyDataSetChanged()
+        holder.body.setOnClickListener {
+            val intent = Intent(context, WordInfoActivity::class.java)
+            intent.putExtra("id", words_data[position].id)
+            context.startActivity(intent)
         }
+
     }
 
     override fun getItemCount(): Int = words_data.size
-    
+
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         var word: TextView = view.findViewById(R.id.word)
-        var btn_del: ImageButton = view.findViewById(R.id.btn_del)
+        val body: CardView = view.findViewById(R.id.rv_card)
+    }
+
+    fun DeleteData(itemId: Int) {
+        dbHelper.DeleteData(itemId)
+        words_data = dbHelper.ReadData()
+        this.notifyDataSetChanged()
     }
 }

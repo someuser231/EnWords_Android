@@ -1,62 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:gravity="center_horizontal"
     tools:context=".HomeFr">
 
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txt_input"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/temp_hint"
+        android:layout_marginBottom="20dp"
+        />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temp_btn_add"
+        />
+
+    <TextView
+        android:id="@+id/txt_tc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/temp_tc"
+        android:textSize="20sp"
+        android:layout_marginVertical="20dp"
+        android:gravity="center"
+        android:freezesText="true"
+        />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="25dp"
+        android:background="@color/light_gray"
         >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="hint"
-            android:layout_marginBottom="20dp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="20dp"
-            >
-
-            <Button
-                android:id="@+id/btn_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add"
-                />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/btn_translate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Translate" />
-
-        </LinearLayout>
-
         <TextView
-            android:id="@+id/txt_translate"
+            android:id="@+id/txt_tl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Translate will be here"
-            android:gravity="left"
-            android:textSize="20dp"
-            android:layout_marginVertical="20dp"
+            android:text="@string/temp_tl"
+            android:gravity="start"
+            android:textSize="20sp"
+            android:freezesText="true"
             />
-    </LinearLayout>
+    </ScrollView>
 
-
-</FrameLayout>
+</LinearLayout>

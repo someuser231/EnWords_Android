@@ -2,4 +2,15 @@
     <string name="app_name">EnWords</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="temp_hint">hint</string>
+    <string name="temp_tc">Transcription</string>
+    <string name="temp_tl">Translation</string>
+    <string name="temp_btn_add">Add</string>
+    <string name="temp_btn_tl">Translate</string>
+    <string name="temp_toolbar">Toolbar</string>
+    <string name="temp_navMenu">Menu</string>
+    <string name="temp_navHome">Home</string>
+    <string name="temp_navSettings">Settings</string>
+    <string name="temp_navDict">Dictionary</string>
 </resources>

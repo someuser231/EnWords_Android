@@ -1,7 +1,9 @@
 package com.kew.enwords
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageButton
@@ -15,6 +17,8 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -36,8 +40,8 @@ class MainActivity : AppCompatActivity() {
         frTransaction.add(R.id.frame, home)
         frTransaction.commit()
 
-        val txt_toolbar: TextView = findViewById(R.id.txt_toolbar)
-        txt_toolbar.text = "Home"
+        val txtToolbar: TextView = findViewById(R.id.txt_toolbar)
+        txtToolbar.setText(R.string.temp_navHome)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.main)
 
@@ -49,8 +53,7 @@ class MainActivity : AppCompatActivity() {
                     frTransaction = frManager.beginTransaction()
                     frTransaction.replace(R.id.frame, home)
                     frTransaction.commit()
-                    txt_toolbar.text = "Home"
-
+                    txtToolbar.setText(R.string.temp_navHome)
 
                     return@setNavigationItemSelectedListener true
                 }
@@ -58,7 +61,13 @@ class MainActivity : AppCompatActivity() {
                     frTransaction = frManager.beginTransaction()
                     frTransaction.replace(R.id.frame, dict)
                     frTransaction.commit()
-                    txt_toolbar.text = "Dictionary"
+                    txtToolbar.setText(R.string.temp_navDict)
+
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.menu_settings -> {
+                    val intent = Intent(this, SettingsActivity::class.java)
+                    startActivity(intent)
 
                     return@setNavigationItemSelectedListener true
                 }
@@ -71,4 +80,5 @@ class MainActivity : AppCompatActivity() {
             drawerLayout.openDrawer(GravityCompat.START)
         }
     }
+
 }
