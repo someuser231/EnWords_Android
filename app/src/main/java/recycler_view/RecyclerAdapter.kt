@@ -5,13 +5,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.kew.enwords.MainActivity
 import com.kew.enwords.R
-import com.kew.enwords.SettingsActivity
 import com.kew.enwords.WordInfoActivity
 import database.DatabaseHelper
 import database.WordStructure
@@ -41,7 +38,7 @@ class RecyclerAdapter(private val dbHelper: DatabaseHelper, private val context:
     }
 
     fun DeleteData(itemId: Int) {
-        dbHelper.DeleteData(itemId)
+        dbHelper.DeleteElement(itemId)
         words_data = dbHelper.ReadData()
         this.notifyDataSetChanged()
     }

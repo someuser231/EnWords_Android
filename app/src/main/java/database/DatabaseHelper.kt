@@ -2,10 +2,8 @@ package database
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
     companion object {
@@ -98,10 +96,19 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
         return word
     }
 
-    fun DeleteData(id: Int) {
+    fun DeleteElement(id: Int) {
         val db = writableDatabase
         val queryDelData = ("delete from $TABLE_NAME where $COL_ID = $id")
         db.execSQL(queryDelData)
+        db.close()
+    }
+
+    fun ModifyElement(word: WordStructure) {
+        val db = writableDatabase
+        val query = ("update $TABLE_NAME set $COL_WORD = '${word.word}'," +
+                "$COL_TC_US = '${word.tcUs}', $COL_TC_UK = '${word.tcUk}'," +
+                "$COL_WORD_FORM = '${word.wordForm}', $COL_TL = '${word.tl}' where $COL_ID = ${word.id}")
+        db.execSQL(query)
         db.close()
     }
 }

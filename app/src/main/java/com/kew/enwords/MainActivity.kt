@@ -15,11 +15,13 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
+import java.lang.reflect.Field
 
 class MainActivity : AppCompatActivity() {
     val home = HomeFr()
@@ -79,6 +81,7 @@ class MainActivity : AppCompatActivity() {
         btnNavMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
+
     }
 
 }

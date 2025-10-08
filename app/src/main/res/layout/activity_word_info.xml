@@ -12,60 +12,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/primary"
+        android:background="@color/primary_dark"
         >
         <ImageButton
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/back_arrow"
+            android:src="@drawable/icon_back_arrow"
             android:background="#00FFFFFF"
             android:contentDescription="back"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Word info"
-            android:textColor="@color/white"
+            android:text="Word Info"
+            android:textColor="@color/dark_gray"
             android:textSize="22sp"
-            android:layout_marginStart="40dp"
+            android:layout_gravity="center"
+            />
+        <ImageButton
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_edit"
+            android:background="#00FFFFFF"
+            android:layout_gravity="end"
+            android:contentDescription="edit"
+            android:layout_marginEnd="20dp"
             />
     </Toolbar>
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_wordInfo"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        >
-
-        <TextView
-            android:id="@+id/txt_word"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Word"
-            android:paddingVertical="20dp"
-            android:textSize="22sp"
-            />
-        <TextView
-            android:id="@+id/txt_tcUs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="US Transcription"
-            android:textSize="22sp"
-            android:paddingTop="20sp"
-            />
-        <TextView
-            android:id="@+id/txt_tcUk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UK Transcription"
-            android:textSize="22sp"
-            android:paddingBottom="20sp"
-            />
-
-    </LinearLayout>
-
+        app:layout_constraintTop_toBottomOf="@id/toolbar_wordInfo"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

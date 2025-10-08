@@ -7,4 +7,5 @@ class WordStructure {
     var tcUk: String? = ""
     var wordForm: String = ""
     var tl: String = ""
+    var status: Int = 0
 }

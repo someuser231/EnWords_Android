@@ -1,6 +1,7 @@
 package com.kew.enwords
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +12,9 @@ import database.DatabaseHelper
 import database.WordStructure
 
 class WordInfoActivity : AppCompatActivity() {
+    val frManager = supportFragmentManager
+    var frTransaction = frManager.beginTransaction()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_word_info)
@@ -20,29 +24,43 @@ class WordInfoActivity : AppCompatActivity() {
             insets
         }
 
-        val btnBack: ImageButton = findViewById(R.id.btn_back)
-        btnBack.setOnClickListener {
-            finish()
-        }
-
         val db = DatabaseHelper(this)
 
         val wordId = intent.getIntExtra("id", -1)
         var word: WordStructure? = null
         if (wordId >= 0) {
             word = db.GetElement(wordId)
+            frTransaction = frManager.beginTransaction()
+            frTransaction.add(R.id.frame, WordInfoFr(word))
+            frTransaction.commit()
         }
         else {
             finish()
         }
 
-        val txtWord: TextView = findViewById(R.id.txt_word)
-        val txtTcUs: TextView = findViewById(R.id.txt_tcUs)
-        val txtTcUk: TextView = findViewById(R.id.txt_tcUk)
+        val btnBack: ImageButton = findViewById(R.id.btn_back)
+        var editMode: Boolean = false
+        btnBack.setOnClickListener {
+            if (!editMode) {
+                finish()
+            }
+            else {
+                frTransaction = frManager.beginTransaction()
+                frTransaction.replace(R.id.frame, WordInfoFr(word!!))
+                frTransaction.commit()
+                editMode = false
+            }
+        }
 
-        txtWord.setText(word!!.word)
-        txtTcUs.setText("Амер.: [${word.tcUs}]")
-        txtTcUk.setText("Брит.: [${word.tcUk}]")
+        val btnEdit: ImageButton = findViewById(R.id.btn_edit)
+        btnEdit.setOnClickListener {
+            if (!editMode) {
+                frTransaction = frManager.beginTransaction()
+                frTransaction.replace(R.id.frame, WordInfoEditFr(word!!))
+                frTransaction.commit()
+                editMode = true
 
+            }
+        }
     }
 }

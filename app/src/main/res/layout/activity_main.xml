@@ -20,13 +20,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/primary"
+            android:background="@color/primary_dark"
             >
             <ImageButton
                 android:id="@+id/btn_nav_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/nav_menu"
+                android:src="@drawable/icon_nav_menu"
                 android:background="#00000000"
                 android:contentDescription="@string/temp_navMenu"
                 />
@@ -34,10 +34,13 @@
                 android:id="@+id/txt_toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+
                 android:text="@string/temp_toolbar"
-                android:textColor="@color/white"
                 android:textSize="22sp"
-                android:layout_marginStart="40dp"
+
+                android:textColor="@color/dark_gray"
                 />
         </Toolbar>
 
@@ -57,6 +60,7 @@
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"
         app:drawerLayoutCornerSize="0dp"
+        android:minWidth="300dp"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>

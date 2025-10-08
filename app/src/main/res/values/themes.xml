@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.EnWords" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
-
         <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="fontFamily">@font/mplus_rounded1c_medium</item>
     </style>
 
     <style name="Theme.EnWords" parent="Base.Theme.EnWords" />

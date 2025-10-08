@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WordInfoFr"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <TextView
+        android:id="@+id/txt_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Word"
+        android:paddingVertical="20dp"
+        android:textSize="22sp"
+        />
+    <TextView
+        android:id="@+id/txt_tcUs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="US Transcription"
+        android:textSize="22sp"
+        android:paddingTop="20sp"
+        />
+    <TextView
+        android:id="@+id/txt_tcUk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UK Transcription"
+        android:textSize="22sp"
+        android:paddingBottom="20sp"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:id="@+id/txt_tl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/temp_tl"
+            android:textSize="22sp"
+            />
+    </ScrollView>
+
+</LinearLayout>

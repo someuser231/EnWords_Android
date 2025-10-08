@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/primary"
+        android:background="@color/primary_dark"
         >
         <ImageButton
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/back_arrow"
+            android:src="@drawable/icon_back_arrow"
             android:background="#00FFFFFF"
             android:contentDescription="back"
             />
@@ -25,9 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:textColor="@color/white"
+            android:textColor="@color/dark_gray"
             android:textSize="22sp"
-            android:layout_marginStart="40dp"
+            android:layout_gravity="center"
             />
     </Toolbar>
 

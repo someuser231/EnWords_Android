@@ -3,7 +3,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="temp_hint">hint</string>
+    <string name="tl_wh">WooordHunt</string>
+    <string name="tl_libre">LibreTranslate</string>
+
+    <string name="temp_hint">Cat</string>
     <string name="temp_tc">Transcription</string>
     <string name="temp_tl">Translation</string>
     <string name="temp_btn_add">Add</string>

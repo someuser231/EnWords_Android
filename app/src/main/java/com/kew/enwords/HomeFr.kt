@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputEditText
+import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import database.DatabaseHelper
 import okhttp3.Call
@@ -19,7 +22,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import okio.IOException
-import kotlin.concurrent.timer
 
 class HomeFr : Fragment() {
     data class WordResp(
@@ -46,8 +48,9 @@ class HomeFr : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val txtInput: TextInputEditText = view.findViewById(R.id.txt_input)
-        val btnAdd: Button = view.findViewById(R.id.btn_add)
+        val txtInput: EditText = view.findViewById(R.id.txt_input)
+        val btnAdd: ImageButton = view.findViewById(R.id.btn_add)
+        val rgrpTl: RadioGroup = view.findViewById(R.id.rgrp_tl)
 
         val db = DatabaseHelper(view.context)
         btnAdd.setOnClickListener {
@@ -73,6 +76,23 @@ class HomeFr : Fragment() {
             timerTl.start()
             return@setOnKeyListener true
         }
+
+        rgrpTl.setOnCheckedChangeListener { group, i ->
+            val idWh = R.id.btn_wh
+            val idLibre = R.id.btn_libre
+            val clrActive = ContextCompat.getColor(requireContext(), R.color.white)
+            val clrNormal = ContextCompat.getColor(requireContext(), R.color.dark_gray)
+
+            when(i) {
+                idWh -> {
+                    group.findViewById<RadioButton>(idLibre).setTextColor(clrNormal)
+                }
+                idLibre -> {
+                    group.findViewById<RadioButton>(idWh).setTextColor(clrNormal)
+                }
+            }
+            group.findViewById<RadioButton>(group.checkedRadioButtonId).setTextColor(clrActive)
+        }
     }
 
     companion object {
@@ -84,8 +104,6 @@ class HomeFr : Fragment() {
                 }
             }
     }
-
-
 
     private fun translateWhApi(view: View, searchingWord: String) {
         val client = OkHttpClient()
